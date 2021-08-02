@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.IntroFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/login_appBar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                app:layout_scrollFlags="scroll|snap|enterAlways">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_binoculars" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/amiko_bold"
+                            android:text="@string/coin_recon"
+                            android:textColor="@color/dark_turquoise"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/amiko_bold"
+                        android:text="@string/Continue"
+                        android:layout_marginEnd="0dp"
+                        android:padding="20dp"
+                        android:background="?android:selectableItemBackground"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                    <!--                <ImageButton-->
+                    <!--                    android:layout_width="50dp"-->
+                    <!--                    android:layout_height="50dp"-->
+                    <!--                    android:layout_alignParentEnd="true"-->
+                    <!--                    android:layout_centerVertical="true"-->
+                    <!--                    android:background="?android:selectableItemBackground"-->
+                    <!--                    android:padding="15dp"-->
+                    <!--                    android:scaleType="centerInside"-->
+                    <!--                    android:src="@drawable/ic_magnifiying_glass" />-->
+
+                </RelativeLayout>
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.todkars.shimmer.ShimmerRecyclerView
+                    android:id="@+id/login_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:shimmer_recycler_item_count="25"
+                    app:shimmer_recycler_layout="@layout/login_markek_shimmer_layout" />
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/gradientbackground_login_bottom">
+
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                android:id="@+id/login_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30sp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/login_button_background"
+                android:text="Login"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:layout_above="@id/signup_button"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                app:finalCornerAngle="30dp"
+                app:initialCornerAngle="30dp"
+                app:spinning_bar_color="#FFF"
+                app:spinning_bar_padding="2dp"
+                app:spinning_bar_width="4dp" />
+
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                android:id="@+id/signup_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30sp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/login_button_background"
+                android:text="Register"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                android:layout_alignParentBottom="true"
+                app:finalCornerAngle="30dp"
+                app:initialCornerAngle="30dp"
+                app:spinning_bar_color="#FFF"
+                app:spinning_bar_padding="2dp"
+                app:spinning_bar_width="4dp" />
+
+<!--            <Button-->
+<!--                android:id="@+id/login_button"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:layout_gravity="bottom"-->
+<!--                android:layout_marginStart="30dp"-->
+<!--                android:layout_marginEnd="30dp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:layout_marginBottom="25dp"-->
+<!--                android:background="@drawable/login_button_background"-->
+<!--                android:fontFamily="@font/amiko_bold"-->
+<!--                android:text="@string/login" />-->
+
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:id="@+id/signup_button"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_above="@id/login_button"-->
+<!--                android:layout_gravity="bottom"-->
+<!--                android:layout_marginStart="30dp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:layout_marginEnd="30dp"-->
+<!--                app:strokeColor="@color/white"-->
+<!--                app:strokeWidth="1dp"-->
+<!--                app:cornerRadius="20dp"-->
+<!--                android:layout_marginBottom="25dp"-->
+<!--                android:fontFamily="@font/amiko_bold"-->
+<!--                android:text="@string/sign_up" />-->
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/show_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_error" />
+
+            <TextView
+                android:id="@+id/error_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/amiko_bold"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/light_gray"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/introFragment">
+
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="com.larrex.coinrecon.fragment.IntroFragment"
+        android:label="loginFragment"
+        tools:layout="@layout/fragment_intro" >
+        <action
+            android:id="@+id/action_loginFragment_to_coinMarketDetailsFragment"
+            app:destination="@id/coinMarketDetailsFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_loginFragment2"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/coinMarketDetailsFragment"
+        android:name="com.larrex.coinrecon.fragment.CoinMarketDetailsFragment"
+        android:label="fragment_coin_market_details"
+        tools:layout="@layout/fragment_coin_market_details" >
+        <action
+            android:id="@+id/action_coinMarketDetailsFragment_to_loginFragment"
+            app:destination="@id/introFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.larrex.coinrecon.fragment.LoginFragment"
+        android:label="fragment_login2"
+        tools:layout="@layout/fragment_login" >
+<!--        <action-->
+<!--            android:id="@+id/action_loginFragment2_to_loginFragment"-->
+<!--            app:destination="@id/introFragment" />-->
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.larrex.coinrecon.fragment.SignupFragment"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" >
+<!--        <action-->
+<!--            android:id="@+id/action_signupFragment_to_loginFragment"-->
+<!--            app:destination="@id/introFragment" />-->
+    </fragment>
+</navigation>

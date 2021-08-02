@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.LoginFragment">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_gravity="center"
+            android:id="@+id/toolbar"
+            android:background="@color/white"
+            app:navigationIcon="@drawable/ic_go_back_left_arrow"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="0dp"
+            android:src="@drawable/ic_binoculars"
+            app:layout_constraintBottom_toTopOf="@id/email_layout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/amiko_bold"
+            android:gravity="center"
+            android:text="@string/coin_recon"
+            android:textColor="@color/dark_turquoise"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/email_layout"
+            app:layout_constraintTop_toBottomOf="@id/logo"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="20dp"
+            android:hint="Email"
+            android:textColorHint="@android:color/darker_gray"
+            app:errorEnabled="true"
+            app:errorTextColor="#D50000"
+            app:layout_constraintBottom_toTopOf="@id/password_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textWebEmailAddress"
+                android:text=""
+                android:textColor="@color/black"
+                android:fontFamily="@font/amiko_bold"
+                android:textColorHint="@color/light_gray"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/email_layout"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Password"
+            android:textColorHint="@android:color/darker_gray"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
+            app:errorTextColor="#D50000"
+            app:hintTextColor="@color/dark_gray"
+            app:layout_constraintBottom_toTopOf="@id/login_continue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:text=""
+                android:fontFamily="@font/amiko_bold"
+                android:textColor="@color/black"
+                android:textColorHint="@color/light_gray"
+                android:textSize="15sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/login_continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30sp"
+            android:fontFamily="@font/amiko_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/login_btn_background2"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            app:finalCornerAngle="30dp"
+            app:initialCornerAngle="30dp"
+            app:layout_constraintBottom_toTopOf="@id/grating"
+            app:spinning_bar_color="@color/white"
+            app:spinning_bar_padding="2dp"
+            app:spinning_bar_width="4dp" />
+
+        <TextView
+            android:id="@+id/grating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="OR"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@id/google_sign_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/google_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30sp"
+            android:layout_marginBottom="90dp"
+            android:background="@drawable/login_btn_background"
+            android:drawableLeft="@drawable/ic_google"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:fontFamily="@font/amiko_bold"
+            android:text="Sign in with Google"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            app:finalCornerAngle="30dp"
+            app:initialCornerAngle="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:spinning_bar_color="@color/dark_turquoise"
+            app:spinning_bar_padding="2dp"
+            app:spinning_bar_width="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="start"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="Forgot password?"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:fontFamily="@font/amiko_bold"
+            android:textStyle="normal" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="match_parent"
+            android:id="@+id/loading"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

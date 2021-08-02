@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "205108307415",
+    "project_id": "coin-recon",
+    "storage_bucket": "coin-recon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205108307415:android:a86e450e3a3bb889595792",
+        "android_client_info": {
+          "package_name": "com.larrex.coinrecon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "205108307415-nc98uss4s2e10jsb8act3ve1ua2ohs0t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtzyR6TVmk1tVxP17U3Ygm5igU5HOQccQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "205108307415-nc98uss4s2e10jsb8act3ve1ua2ohs0t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
