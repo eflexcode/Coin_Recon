@@ -9,6 +9,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.google.firebase.auth.AuthCredential;
 import com.larrex.coinrecon.api.ApiClients;
 import com.larrex.coinrecon.model.ApiResult;
 import com.larrex.coinrecon.model.Error;
@@ -56,6 +57,7 @@ public class LoginViewModel extends AndroidViewModel {
     //login
     public MutableLiveData<Boolean> isLoginSuccessful = new MutableLiveData<>();
     public MutableLiveData<Boolean> isRegisterSuccessful = new MutableLiveData<>();
+    public MutableLiveData<Boolean> isGoogleSuccessful = new MutableLiveData<>();
 
     Context context;
 
@@ -237,11 +239,11 @@ public class LoginViewModel extends AndroidViewModel {
         loginRepository.doLoginWhitEmailAndPassword(email, password);
     }
 
-    public void doRegister(String email, String password, String name){
-       loginRepository.doRegisterEmailAndPassword(email, password, name);
+    public void doRegister(String email, String password, String name) {
+        loginRepository.doRegisterEmailAndPassword(email, password, name);
     }
 
-    public LiveData<Boolean> observeIsRegisterSuccessful(){
+    public LiveData<Boolean> observeIsRegisterSuccessful() {
 
         isRegisterSuccessful = loginRepository.isRegisterSuccessful;
 
@@ -249,7 +251,7 @@ public class LoginViewModel extends AndroidViewModel {
 
     }
 
-    public LiveData<Boolean> observeIsLoginSuccessful(){
+    public LiveData<Boolean> observeIsLoginSuccessful() {
 
         isLoginSuccessful = loginRepository.isLoginSuccessful;
 
@@ -257,4 +259,15 @@ public class LoginViewModel extends AndroidViewModel {
 
     }
 
+    public LiveData<Boolean> observeIsGoogleSuccessful() {
+
+        isGoogleSuccessful = loginRepository.isGoogleSuccessful;
+
+        return isGoogleSuccessful;
+
+    }
+
+    public void doGoogleSignIn(AuthCredential authCredential) {
+        loginRepository.doGoogleSignIn(authCredential);
+    }
 }

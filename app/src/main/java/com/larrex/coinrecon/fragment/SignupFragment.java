@@ -3,6 +3,11 @@ package com.larrex.coinrecon.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -15,12 +20,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.GoogleAuthCredential;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.larrex.coinrecon.MainActivity;
 import com.larrex.coinrecon.R;
 import com.larrex.coinrecon.databinding.FragmentSignupBinding;
 import com.larrex.coinrecon.viewmodel.LoginViewModel;
 
 import java.util.Date;
+
+import static android.app.Activity.RESULT_OK;
 
 
 public class SignupFragment extends Fragment {
@@ -29,7 +45,8 @@ public class SignupFragment extends Fragment {
 
     LoginViewModel loginViewModel;
 
-
+    GoogleSignInClient googleSignInClient;
+    GoogleSignInOptions googleSignInOptions;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,6 +68,15 @@ public class SignupFragment extends Fragment {
     }
 
     private void init() {
+
+        //google stuff
+
+        googleSignInOptions = new GoogleSignInOptions.Builder()
+                .requestIdToken(String.valueOf(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        googleSignInClient = GoogleSignIn.getClient(getContext(), googleSignInOptions);
 
         loginViewModel = new ViewModelProvider(getActivity()).get(LoginViewModel.class);
 
@@ -160,15 +186,66 @@ public class SignupFragment extends Fragment {
             }
         });
 
+        ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+
+                        if (result.getResultCode() == RESULT_OK) {
+
+                            Task<GoogleSignInAccount> googleSignInAccountTask = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
+
+                            GoogleSignInAccount googleSignInAccount = null;
+                            try {
+                                googleSignInAccount = googleSignInAccountTask.getResult(ApiException.class);
+                                AuthCredential authCredential = GoogleAuthProvider.getCredential(googleSignInAccount.getIdToken(), null);
+
+                                loginViewModel.doGoogleSignIn(authCredential);
+
+                            } catch (ApiException e) {
+                                e.printStackTrace();
+                                Toast.makeText(getContext(), "Error from google", Toast.LENGTH_SHORT).show();
+                            }
+
+
+                        }
+
+                    }
+                });
+
+
         binding.googleSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 binding.googleSignIn.startAnimation();
                 binding.loading.setVisibility(View.VISIBLE);
+
+                Intent intent = googleSignInClient.getSignInIntent();
+                resultLauncher.launch(intent);
+
             }
         });
 
         loginViewModel.observeIsRegisterSuccessful().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) {
+
+                    //go to main activity
+
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+
+                } else {
+                    binding.loginContinue.revertAnimation();
+                    binding.loading.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        loginViewModel.observeIsGoogleSuccessful().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {

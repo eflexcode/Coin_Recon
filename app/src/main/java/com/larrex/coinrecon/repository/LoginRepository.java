@@ -6,8 +6,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -27,6 +32,7 @@ public class LoginRepository {
 
     public MutableLiveData<Boolean> isLoginSuccessful = new MutableLiveData<>();
     public MutableLiveData<Boolean> isRegisterSuccessful = new MutableLiveData<>();
+    public MutableLiveData<Boolean> isGoogleSuccessful = new MutableLiveData<>();
 
     @Inject
     FirebaseAuth firebaseAuth;
@@ -92,4 +98,63 @@ public class LoginRepository {
         });
 
     }
+
+    public void doGoogleSignIn(AuthCredential authCredential) {
+
+        firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if (task.isSuccessful()) {
+
+                    boolean isNewUser = task.getResult().getAdditionalUserInfo().isNewUser();
+
+                    if (isNewUser) {
+
+                        GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(context);
+
+                        String name = googleSignInAccount.getDisplayName();
+                        String email = googleSignInAccount.getEmail();
+                        String id = firebaseAuth.getUid();
+
+                        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+                        CollectionReference userCollection = firebaseFirestore.collection("Users");
+
+
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("userName", name);
+                        map.put("email", email);
+                        map.put("id", id);
+
+                        userCollection.document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                isGoogleSuccessful.setValue(true);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                isGoogleSuccessful.setValue(false);
+                                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
+                    } else {
+                        isGoogleSuccessful.setValue(true);
+                    }
+
+                }
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                isGoogleSuccessful.setValue(false);
+            }
+        });
+
+    }
+
 }
