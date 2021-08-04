@@ -58,6 +58,7 @@ public class LoginViewModel extends AndroidViewModel {
     public MutableLiveData<Boolean> isLoginSuccessful = new MutableLiveData<>();
     public MutableLiveData<Boolean> isRegisterSuccessful = new MutableLiveData<>();
     public MutableLiveData<Boolean> isGoogleSuccessful = new MutableLiveData<>();
+    public MutableLiveData<Boolean> isForgotPasswordSuccessful = new MutableLiveData<>();
 
     Context context;
 
@@ -267,7 +268,19 @@ public class LoginViewModel extends AndroidViewModel {
 
     }
 
+    public LiveData<Boolean> observeIsForgotPasswordSuccessful() {
+
+        isForgotPasswordSuccessful = loginRepository.isForgotPasswordSuccessful;
+
+        return isForgotPasswordSuccessful;
+
+    }
+
     public void doGoogleSignIn(AuthCredential authCredential) {
         loginRepository.doGoogleSignIn(authCredential);
+    }
+
+    public void doForgotPassword(String email) {
+        loginRepository.doForgotPassword(email);
     }
 }

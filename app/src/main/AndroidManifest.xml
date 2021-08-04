@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoinRecon"
         tools:targetApi="o">
-        <activity android:name=".ui.signup.SignUpActivity"></activity>
+        <activity android:name=".ui.signup.ForgotPasswordActivity"></activity>
         <activity android:name=".ui.signup.LoginActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ui.signup.IntroActivity">

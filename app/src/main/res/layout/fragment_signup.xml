@@ -212,7 +212,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="30sp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/login_btn_background"
             android:drawableLeft="@drawable/ic_google"
             android:fontFamily="@font/amiko_bold"

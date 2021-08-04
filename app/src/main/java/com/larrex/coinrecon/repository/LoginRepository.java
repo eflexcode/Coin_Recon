@@ -33,6 +33,7 @@ public class LoginRepository {
     public MutableLiveData<Boolean> isLoginSuccessful = new MutableLiveData<>();
     public MutableLiveData<Boolean> isRegisterSuccessful = new MutableLiveData<>();
     public MutableLiveData<Boolean> isGoogleSuccessful = new MutableLiveData<>();
+    public MutableLiveData<Boolean> isForgotPasswordSuccessful = new MutableLiveData<>();
 
     @Inject
     FirebaseAuth firebaseAuth;
@@ -112,7 +113,11 @@ public class LoginRepository {
                     if (isNewUser) {
 
                         GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(context);
+                        String imageUrl = null;
 
+                        if (googleSignInAccount.getPhotoUrl() != null) {
+                            imageUrl = googleSignInAccount.getPhotoUrl().toString();
+                        }
                         String name = googleSignInAccount.getDisplayName();
                         String email = googleSignInAccount.getEmail();
                         String id = firebaseAuth.getUid();
@@ -120,10 +125,10 @@ public class LoginRepository {
                         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
                         CollectionReference userCollection = firebaseFirestore.collection("Users");
 
-
                         Map<String, Object> map = new HashMap<>();
                         map.put("userName", name);
                         map.put("email", email);
+                        map.put("imageUrl", imageUrl);
                         map.put("id", id);
 
                         userCollection.document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -152,6 +157,23 @@ public class LoginRepository {
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
                 isGoogleSuccessful.setValue(false);
+            }
+        });
+
+    }
+
+    public void doForgotPassword(String email) {
+
+        firebaseAuth.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                isForgotPasswordSuccessful.setValue(true);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                isForgotPasswordSuccessful.setValue(false);
             }
         });
 

@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,8 @@ public class SignupFragment extends Fragment {
     GoogleSignInClient googleSignInClient;
     GoogleSignInOptions googleSignInOptions;
 
+    private static final String TAG = "SignupFragment";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -72,7 +75,9 @@ public class SignupFragment extends Fragment {
         //google stuff
 
         googleSignInOptions = new GoogleSignInOptions.Builder()
-                .requestIdToken(String.valueOf(R.string.default_web_client_id))
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestProfile()
+                .requestId()
                 .requestEmail()
                 .build();
 
@@ -191,27 +196,37 @@ public class SignupFragment extends Fragment {
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
+                        Log.d(TAG, "onActivityResult: google retuned");
+//                        if (result.getResultCode() == RESULT_OK) {
 
-                        if (result.getResultCode() == RESULT_OK) {
-
-                            Task<GoogleSignInAccount> googleSignInAccountTask = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
-
-                            GoogleSignInAccount googleSignInAccount = null;
-                            try {
-                                googleSignInAccount = googleSignInAccountTask.getResult(ApiException.class);
-                                AuthCredential authCredential = GoogleAuthProvider.getCredential(googleSignInAccount.getIdToken(), null);
-
-                                loginViewModel.doGoogleSignIn(authCredential);
-
-                            } catch (ApiException e) {
-                                e.printStackTrace();
-                                Toast.makeText(getContext(), "Error from google", Toast.LENGTH_SHORT).show();
-                            }
-
-
+                        if (result.getData() == null) {
+                            Log.d(TAG, "onActivityResult: data is null");
+                        } else {
+                            Log.d(TAG, "onActivityResult: data is not null");
                         }
 
+
+                        Task<GoogleSignInAccount> googleSignInAccountTask = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
+
+
+                        try {
+                            GoogleSignInAccount googleSignInAccount = googleSignInAccountTask.getResult(ApiException.class);
+                            AuthCredential authCredential = GoogleAuthProvider.getCredential(googleSignInAccount.getIdToken(), null);
+
+                            loginViewModel.doGoogleSignIn(authCredential);
+
+                        } catch (ApiException e) {
+                            e.printStackTrace();
+                            Log.d(TAG, "onActivityResult: " + e.getLocalizedMessage());
+                            Toast.makeText(getContext(), "Error from google", Toast.LENGTH_SHORT).show();
+                            binding.googleSignIn.revertAnimation();
+                            binding.loading.setVisibility(View.GONE);
+                        }
+
+
                     }
+
+//                    }
                 });
 
 
@@ -253,11 +268,11 @@ public class SignupFragment extends Fragment {
                     //go to main activity
 
                     Intent intent = new Intent(getActivity(), MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
 
                 } else {
-                    binding.loginContinue.revertAnimation();
+                    binding.googleSignIn.revertAnimation();
                     binding.loading.setVisibility(View.GONE);
                 }
             }

@@ -33,6 +33,7 @@ import com.larrex.coinrecon.databinding.FragmentLoginBinding;
 import com.larrex.coinrecon.viewmodel.LoginViewModel;
 
 import static android.app.Activity.RESULT_OK;
+import static androidx.navigation.Navigation.findNavController;
 
 
 public class LoginFragment extends Fragment {
@@ -66,8 +67,9 @@ public class LoginFragment extends Fragment {
     private void init() {
 
         googleSignInOptions = new GoogleSignInOptions.Builder()
-                .requestIdToken(String.valueOf(R.string.default_web_client_id))
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
+                .requestProfile()
                 .build();
 
         googleSignInClient = GoogleSignIn.getClient(getContext(), googleSignInOptions);
@@ -155,6 +157,8 @@ public class LoginFragment extends Fragment {
                             } catch (ApiException e) {
                                 e.printStackTrace();
                                 Toast.makeText(getContext(), "Error from google", Toast.LENGTH_SHORT).show();
+                                binding.googleSignIn.revertAnimation();
+                                binding.loading.setVisibility(View.GONE);
                             }
 
 
@@ -208,6 +212,13 @@ public class LoginFragment extends Fragment {
                     binding.loginContinue.revertAnimation();
                     binding.loading.setVisibility(View.GONE);
                 }
+            }
+        });
+
+        binding.forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findNavController(binding.getRoot()).navigate(R.id.action_loginFragment_to_forgotPasswordFragment);
             }
         });
 
