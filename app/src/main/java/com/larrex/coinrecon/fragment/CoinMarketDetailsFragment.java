@@ -188,7 +188,7 @@ public class CoinMarketDetailsFragment extends BottomSheetDialogFragment {
                 binding.chart.getAxisRight().setDrawGridLines(false);
                 binding.chart.setScaleEnabled(false);
                 binding.chart.invalidate();
-//                binding.chart.
+//                binding.chart.sle
 
                 XAxis xAxis = binding.chart.getXAxis();
                 xAxis.setEnabled(false);
@@ -221,6 +221,70 @@ public class CoinMarketDetailsFragment extends BottomSheetDialogFragment {
 //                xAxis.setValueFormatter(new SetAXAxis());
                 xAxis.setGranularity(1f);
 //                binding.chart.
+            }
+        });
+
+
+        binding.twentyFourHours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.getChartData(coinName, currency, days);
+            }
+        });
+
+        binding.sevenDays.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int days = 7;
+
+                viewModel.getChartData(coinName, currency, days);
+            }
+        });
+
+        binding.fourteenDays.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int days = 14;
+
+                viewModel.getChartData(coinName, currency, days);
+            }
+        });
+        binding.thirtyDays.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int days = 30;
+
+                viewModel.getChartData(coinName, currency, days);
+            }
+        });
+        binding.ninetyDays.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int days = 90;
+
+                viewModel.getChartData(coinName, currency, days);
+            }
+        });
+        binding.oneHundredAndEightyDays.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int days = 180;
+
+                viewModel.getChartData(coinName, currency, days);
+            }
+        });
+        binding.oneYear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int days =365;
+
+                viewModel.getChartData(coinName, currency, days);
             }
         });
 

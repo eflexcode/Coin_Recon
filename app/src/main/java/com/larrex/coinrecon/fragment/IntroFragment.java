@@ -2,6 +2,7 @@ package com.larrex.coinrecon.fragment;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.Network;
@@ -26,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.larrex.coinrecon.MainActivity;
 import com.larrex.coinrecon.R;
 import com.larrex.coinrecon.adapter.MarketAdapter;
 import com.larrex.coinrecon.databinding.FragmentIntroBinding;
@@ -102,6 +104,15 @@ public class IntroFragment extends Fragment {
             MarketAdapter marketAdapter = new MarketAdapter(getContext());
 
             Handler handler = new Handler();
+
+            binding.skip.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            });
 
             viewModel.resultMutableLiveData.observe(getViewLifecycleOwner(), new Observer<ApiResult<List<Market>>>() {
                 @Override

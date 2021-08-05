@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class RetrofitModule {
 
-    @Named("loginMarket")
+    @Named("marketData")
     @Provides
     public static ApiClients getLoginMarket() {
 

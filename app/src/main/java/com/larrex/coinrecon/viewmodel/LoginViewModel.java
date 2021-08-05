@@ -35,7 +35,7 @@ public class LoginViewModel extends AndroidViewModel {
 
     //    @Named("getLoginMarket")
 
-    @Named("loginMarket")
+    @Named("marketData")
     @Inject
     ApiClients getLoginMarketDataApiClients;
 
@@ -78,7 +78,7 @@ public class LoginViewModel extends AndroidViewModel {
         map.put("sparkline", false);
         map.put("price_change_percentage", "24h");
 
-        getLoginMarketDataApiClients.getLoginMarketData(map).enqueue(new Callback<List<Market>>() {
+        getLoginMarketDataApiClients.getMarketData(map).enqueue(new Callback<List<Market>>() {
             @Override
             public void onResponse(@NotNull Call<List<Market>> call, @NotNull Response<List<Market>> response) {
 

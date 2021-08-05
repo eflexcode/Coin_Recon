@@ -14,7 +14,7 @@ import retrofit2.http.QueryMap;
 public interface ApiClients {
 
     @GET("markets")
-    Call<List<Market>> getLoginMarketData(@QueryMap Map<String, Object> marketInfoParameter);
+    Call<List<Market>> getMarketData(@QueryMap Map<String, Object> marketInfoParameter);
 
     @GET("coins/{coinname}/ohlc")
     Call<List<List<Float>>> getChartData(@Path("coinname") String coinname, @QueryMap Map<String, Object> chartDataParameter);

@@ -19,8 +19,8 @@
         tools:targetApi="o">
         <activity android:name=".ui.signup.ForgotPasswordActivity"></activity>
         <activity android:name=".ui.signup.LoginActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ui.signup.IntroActivity">
+        <activity android:name=".ui.signup.IntroActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
