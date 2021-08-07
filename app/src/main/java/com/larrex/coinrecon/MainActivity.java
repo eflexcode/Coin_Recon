@@ -13,6 +13,10 @@ import android.view.View;
 import com.google.firebase.auth.FirebaseAuth;
 import com.larrex.coinrecon.databinding.ActivityMainBinding;
 
+import dagger.hilt.android.AndroidEntryPoint;
+import dagger.hilt.android.EarlyEntryPoint;
+
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;

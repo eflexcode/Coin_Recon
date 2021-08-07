@@ -18,11 +18,11 @@ import com.larrex.coinrecon.databinding.LoginMarkekLayoutBinding;
 import com.larrex.coinrecon.model.Market;
 import com.larrex.coinrecon.viewmodel.LoginViewModel;
 
-public class MarketAdapter extends ListAdapter<Market, MarketAdapter.MarketViewHolder> {
+public class MarketAdapterLogin extends ListAdapter<Market, MarketAdapterLogin.MarketViewHolder> {
 
     Context context;
 
-    public MarketAdapter(Context context) {
+    public MarketAdapterLogin(Context context) {
         super(marketItemCallback);
 
         this.context = context;

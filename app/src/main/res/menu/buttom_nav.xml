@@ -4,7 +4,7 @@
     <item
         android:id="@+id/martekInfoFragment"
         android:icon="@drawable/ic_graph"
-        android:title="Statistics" />
+        android:title="Market Info" />
 
     <item
         android:id="@+id/exchangeFragment"

@@ -17,7 +17,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -29,7 +28,7 @@ import android.view.ViewGroup;
 import com.google.android.material.snackbar.Snackbar;
 import com.larrex.coinrecon.MainActivity;
 import com.larrex.coinrecon.R;
-import com.larrex.coinrecon.adapter.MarketAdapter;
+import com.larrex.coinrecon.adapter.MarketAdapterLogin;
 import com.larrex.coinrecon.databinding.FragmentIntroBinding;
 import com.larrex.coinrecon.model.ApiResult;
 import com.larrex.coinrecon.model.Error;
@@ -101,7 +100,7 @@ public class IntroFragment extends Fragment {
 
             }
 
-            MarketAdapter marketAdapter = new MarketAdapter(getContext());
+            MarketAdapterLogin marketAdapterLogin = new MarketAdapterLogin(getContext());
 
             Handler handler = new Handler();
 
@@ -119,9 +118,9 @@ public class IntroFragment extends Fragment {
                 public void onChanged(ApiResult<List<Market>> listApiResult) {
 
                     if (listApiResult.getResult().size() > 0 && listApiResult != null) {
-                        binding.loginRecyclerView.setAdapter(marketAdapter);
+                        binding.loginRecyclerView.setAdapter(marketAdapterLogin);
                         binding.loginRecyclerView.hideShimmer();
-                        marketAdapter.submitList(listApiResult.getResult());
+                        marketAdapterLogin.submitList(listApiResult.getResult());
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -139,7 +138,7 @@ public class IntroFragment extends Fragment {
                 public void onChanged(ApiResult<Error> errorApiResult) {
                     binding.errorMessage.setText(errorApiResult.getResult().getErrorMessage());
                     binding.loginRecyclerView.hideShimmer();
-                    marketAdapter.submitList(null);
+                    marketAdapterLogin.submitList(null);
                     binding.showError.setVisibility(View.VISIBLE);
                 }
             });

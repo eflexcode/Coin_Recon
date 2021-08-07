@@ -1,38 +1,14 @@
 package com.larrex.coinrecon.ui.signup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.net.ConnectivityManager;
-import android.net.Network;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.larrex.coinrecon.R;
-import com.larrex.coinrecon.adapter.MarketAdapter;
 import com.larrex.coinrecon.databinding.ActivityLoginBinding;
-import com.larrex.coinrecon.model.ApiResult;
-import com.larrex.coinrecon.model.Error;
-import com.larrex.coinrecon.model.Market;
 import com.larrex.coinrecon.viewmodel.LoginViewModel;
-
-import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
