@@ -80,19 +80,55 @@
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
+                android:id="@+id/nested"
                 android:layout_height="match_parent">
+                <!--            <androidx.recyclerview.widget.RecyclerView-->
+                <!--                android:id="@+id/market_main_info_recyclerView"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content" />-->
 
                 <com.todkars.shimmer.ShimmerRecyclerView
                     android:id="@+id/market_info_recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:scrollbars="vertical"
                     app:shimmer_recycler_item_count="25"
                     app:shimmer_recycler_layout="@layout/market_info_item_shimara_layout" />
+
 
             </androidx.core.widget.NestedScrollView>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+        <LinearLayout
+            android:id="@+id/show_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_error_2" />
+
+            <TextView
+                android:id="@+id/error_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/amiko_bold"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/light_gray"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

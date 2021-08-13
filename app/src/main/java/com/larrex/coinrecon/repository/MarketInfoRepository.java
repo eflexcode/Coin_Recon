@@ -46,7 +46,7 @@ public class MarketInfoRepository {
     }
 
 
-    public void getMarketData(String currency,int perPage,int page){
+    public void getMarketData(String currency, int perPage, int page) {
 
         Map<String, Object> map = new HashMap<>();
         map.put("vs_currency", currency);
@@ -119,11 +119,13 @@ public class MarketInfoRepository {
 
             @Override
             public void onFailure(Call<List<Market>> call, Throwable t) {
-                Error error = new Error(t.getMessage());
+                Error error = new Error(t.getMessage()+"\n Drag down to refresh");
 
                 ApiResult<Error> errorApiResult = new ApiResult<>(error);
 
-                errorChartMutableLiveData.setValue(errorApiResult);
+                errorMutableLiveData.setValue(errorApiResult);
+                ;
+
 //                Log.d(TAG, "onFailure: " + t.getMessage());
             }
         });
