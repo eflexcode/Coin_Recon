@@ -50,6 +50,21 @@ public class RetrofitModule {
 
     }
 
+    @Named("exchange")
+    @Provides
+    public static ApiClients getExchangeData() {
+
+        String base_url = "https://api.coingecko.com/api/v3/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(base_url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(ApiClients.class);
+
+    }
+
 
 
 }
