@@ -2,6 +2,7 @@ package com.larrex.coinrecon.api;
 
 import com.larrex.coinrecon.model.Exchange;
 import com.larrex.coinrecon.model.Market;
+import com.larrex.coinrecon.model.News;
 
 import java.util.List;
 import java.util.Map;
@@ -24,5 +25,7 @@ public interface ApiClients {
     @GET("exchanges")
     Call<List<Exchange>> getExchangeData(@Query("per_page") int perPage,@Query("page") int page);
 
+    @GET("everything")
+    Call<News> searchNews(@QueryMap Map<String,String> searchMap);
 
 }

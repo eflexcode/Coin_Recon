@@ -65,6 +65,18 @@ public class RetrofitModule {
 
     }
 
+    @Named("news")
+    @Provides
+    public static ApiClients getNews() {
+        final String Base_url = "https://newsapi.org/v2/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Base_url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(ApiClients.class);
+    }
 
 
 }

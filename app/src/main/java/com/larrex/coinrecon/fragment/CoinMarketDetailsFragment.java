@@ -63,7 +63,6 @@ public class CoinMarketDetailsFragment extends BottomSheetDialogFragment {
     LoginViewModel viewModel;
     Dataset dataset;
 
-
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -117,7 +116,6 @@ public class CoinMarketDetailsFragment extends BottomSheetDialogFragment {
             NumberFormat formatter = NumberFormat.getCurrencyInstance();
             formatter.setMaximumFractionDigits(6);
 
-
             String marketPercent = formatter.format(market.getPrice_change_24h());
 
             String volume = decimalFormat.format(market.getPrice_change_percentage_24h());
@@ -132,7 +130,6 @@ public class CoinMarketDetailsFragment extends BottomSheetDialogFragment {
         ArrayList<Entry> candleEntries = new ArrayList<>();
 
         ArrayList<String> chartTimeArrayList = new ArrayList<>();
-
 
         viewModel.chartDataMutableLiveData.observe(getViewLifecycleOwner(), new Observer<List<List<Float>>>() {
             @Override
@@ -205,7 +202,6 @@ public class CoinMarketDetailsFragment extends BottomSheetDialogFragment {
 
                 xAxis.setValueFormatter(new ValueFormatter() {
 
-
 //                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 
                     @Override
@@ -214,7 +210,7 @@ public class CoinMarketDetailsFragment extends BottomSheetDialogFragment {
                         long time = (long) value ;//* 1000L;
                         formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-                        return "";//formatter.format(new Date(time));
+                        return "";
                     }
                 });
 

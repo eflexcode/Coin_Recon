@@ -85,7 +85,7 @@ public class ExchangeAdapter extends RecyclerView.Adapter<ExchangeAdapter.Market
                 DecimalFormat decimalFormat = new DecimalFormat("###,###.##");
                 decimalFormat.setRoundingMode(RoundingMode.UP);
                 String volume = decimalFormat.format(exchange.getTrade_volume_24h_btc_normalized());
-                holder.binding.exchangeVol.setText("$"+volume);
+                holder.binding.exchangeVol.setText("BTC "+volume);
 
 
         }
