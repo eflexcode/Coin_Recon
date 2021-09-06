@@ -2,8 +2,8 @@ package com.larrex.coinrecon.repository;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.larrex.coinrecon.api.ApiClients;
@@ -23,9 +23,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MarketInfoRepository {
+public class SearchMarketRepository {
 
     Context context;
+
+    private static final String TAG = "SearchMarketRepository";
 
     @Named("marketData")
     @Inject
@@ -35,24 +37,26 @@ public class MarketInfoRepository {
     @Inject
     ApiClients getChartDataApiClients;
 
-    public MutableLiveData<ApiResult<List<Market>>> resultMutableLiveData = new MutableLiveData<ApiResult<List<Market>>>();
+    public MutableLiveData<ApiResult<Market>> resultMutableLiveData = new MutableLiveData<ApiResult<Market>>();
     public MutableLiveData<ApiResult<Error>> errorMutableLiveData = new MutableLiveData<>();
-    public MutableLiveData<ApiResult<Error>> errorChartMutableLiveData = new MutableLiveData<>();
-    public MutableLiveData<Market> marketMutableLiveData = new MutableLiveData<>();
-    public MutableLiveData<List<List<Float>>> chartDataMutableLiveData = new MutableLiveData<>();
 
     @Inject
-    public MarketInfoRepository(@ApplicationContext Context context) {
+    public SearchMarketRepository(@ApplicationContext Context context) {
         this.context = context;
     }
 
-    public void getMarketData(String currency, int perPage, int page) {
+    public void searchMarket(String currency, String id) {
+
+//        Toast.makeText(context, "hhhhhhhhhhhhhhhhhhhhhhh", Toast.LENGTH_SHORT).show();
+
+        Log.d(TAG, "searchMarket: hhhhhhhhhhhhhhhhhhhhhhh");
 
         Map<String, Object> map = new HashMap<>();
         map.put("vs_currency", currency);
+        map.put("ids", id);
         map.put("order", "market_cap_desc");
-        map.put("per_page", perPage);
-        map.put("page", page);
+        map.put("per_page", 100);
+        map.put("page", 1);
         map.put("sparkline", false);
         map.put("price_change_percentage", "24h");
 
@@ -105,9 +109,16 @@ public class MarketInfoRepository {
 
                 if (response.code() == 200 && response.body() != null) {
 
-                    ApiResult<List<Market>> marketApiResult = new ApiResult<>(response.body());
+                    for (Market market : response.body()) {
+                        ApiResult<Market> marketApiResult = new ApiResult<>(market);
+                        resultMutableLiveData.setValue(marketApiResult);
+                        Log.d(TAG, "searchMarket: "+market.getName());
+                    }
 
-                    resultMutableLiveData.setValue(marketApiResult);
+                    Log.d(TAG, "searchMarket: lllllllllllllllllllllllll");
+
+
+
                 } else {
                     Error error = new Error("Request OK but noting was returned");
 
@@ -118,8 +129,8 @@ public class MarketInfoRepository {
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Market>> call, @NonNull Throwable t) {
-                Error error = new Error(t.getMessage()+"\n Drag down to refresh");
+            public void onFailure(Call<List<Market>> call, Throwable t) {
+                Error error = new Error(t.getMessage());
 
                 ApiResult<Error> errorApiResult = new ApiResult<>(error);
 
@@ -127,6 +138,7 @@ public class MarketInfoRepository {
 
             }
         });
+
 
     }
 

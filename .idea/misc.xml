@@ -11,13 +11,15 @@
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/ic_go_back_left_arrow.xml" value="0.2703125" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/ic_google.xml" value="0.2703125" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/ic_graph.xml" value="0.2703125" />
+        <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/ic_search.xml" value="0.2703125" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/ic_search_4_.xml" value="0.2703125" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/ic_up.xml" value="0.2703125" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/login_btn_background.xml" value="0.2703125" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/login_shimmera_background.xml" value="0.2703125" />
+        <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/search_bar_background.xml" value="0.2703125" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_exchange.xml" value="0.2246376811594203" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_news.xml" value="0.2105978260869565" />
-        <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_search.xml" value="0.1983695652173913" />
+        <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_search.xml" value="0.4" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/market_info_item_layout.xml" value="0.15625" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/market_info_item_shimara_layout.xml" value="0.1693840579710145" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/news_item_layout.xml" value="0.2105978260869565" />

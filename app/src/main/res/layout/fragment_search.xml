@@ -24,24 +24,27 @@
                 android:layout_height="match_parent">
 
                 <EditText
+                    android:id="@+id/search"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentBottom="true"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
                     android:layout_toStartOf="@id/cancel_search"
-                    android:background="@color/lighter_gray"
+                    android:background="@drawable/search_bar_background"
                     android:drawableStart="@drawable/ic_search"
                     android:drawablePadding="10dp"
+                    android:gravity="start|center"
                     android:hint="@string/enter_coin_name_or_contract_address"
+                    android:imeActionLabel="Go"
+                    android:textAllCaps="false"
+                    android:imeOptions="actionGo"
+                    android:inputType="text"
                     android:maxLines="1"
                     android:padding="10dp"
+
                     android:singleLine="true"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/cancel_search"
@@ -61,10 +64,10 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_history_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"
-            android:id="@+id/search_history_recycler_view"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:listitem="@layout/searched_history_item_layout" />
 

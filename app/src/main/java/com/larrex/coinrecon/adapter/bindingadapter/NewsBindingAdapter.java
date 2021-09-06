@@ -45,5 +45,19 @@ public class NewsBindingAdapter {
 
 
     }
+    @BindingAdapter("setPrettyTime2")
+    public static void setPrettyTime2(TextView time, String timeString) {
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH);
+
+        try {
+            Date date = dateFormat.parse(timeString);
+            PrettyTime prettyTime = new PrettyTime();
+            time.setText(prettyTime.format(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 }

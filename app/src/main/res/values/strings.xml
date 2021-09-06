@@ -6,5 +6,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Continue">Skip</string>
-    <string name="enter_coin_name_or_contract_address">Search</string>
+    <string name="enter_coin_name_or_contract_address">Search Token</string>
 </resources>
