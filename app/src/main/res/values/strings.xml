@@ -7,4 +7,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Continue">Skip</string>
     <string name="enter_coin_name_or_contract_address">Search Token</string>
+    <string name="market_info">Market Info</string>
+    <string name="exchanges">Exchanges</string>
+    <string name="news">Explore</string>
+    <string name="search">Search</string>
+    <string name="more">More</string>
 </resources>

@@ -17,6 +17,7 @@
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/login_btn_background.xml" value="0.2703125" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/login_shimmera_background.xml" value="0.2703125" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/search_bar_background.xml" value="0.2703125" />
+        <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/activity_main.xml" value="0.1693840579710145" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_exchange.xml" value="0.2246376811594203" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_news.xml" value="0.2105978260869565" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_search.xml" value="0.4" />
@@ -25,6 +26,40 @@
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/news_item_layout.xml" value="0.2105978260869565" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/news_item_shimmer_layout.xml" value="0.15625" />
         <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/searched_history_item_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Program Files/AndroidStudioProjects/CoinRecon/app/src/main/res/menu/buttom_nav.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/disclaimer.xml" value="0.2703125" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/ic_binoculars.xml" value="0.2703125" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/ic_info.xml" value="0.2703125" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/login_btn_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/login_btn_background2.xml" value="0.2703125" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/login_button_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/drawable/login_shimmera_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/activity_login2.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/disclaimer_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/exchange_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_coin_market_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_exchange.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_home_market.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_martek_info.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_more.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_news.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_news_info.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_search.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/fragment_trending.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/login_markek_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/market_details_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/market_info_item_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/news_item_layout.xml" value="0.264" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/news_item_shimmer_layout.xml" value="0.2151268115942029" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/trending_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/layout/trending_shimara_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/menu/buttom_nav.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/menu/more_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Larrex/AndroidStudioProjects/CoinRecon/app/src/main/res/menu/news_toolbar.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

@@ -17,10 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoinRecon"
         tools:targetApi="o">
-        <activity android:name=".ui.signup.ForgotPasswordActivity"></activity>
-        <activity android:name=".ui.signup.LoginActivity" />
-        <activity android:name=".ui.signup.IntroActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.CoinRecon.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,9 +29,26 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.signup.ForgotPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.signup.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.signup.IntroActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+
         <service
             android:name=".service.InternetConnectionService"
             android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8474139776659956~5272877596" />
     </application>
 
 </manifest>

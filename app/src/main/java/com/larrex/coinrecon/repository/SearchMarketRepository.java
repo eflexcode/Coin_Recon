@@ -112,13 +112,9 @@ public class SearchMarketRepository {
                     for (Market market : response.body()) {
                         ApiResult<Market> marketApiResult = new ApiResult<>(market);
                         resultMutableLiveData.setValue(marketApiResult);
-                        Log.d(TAG, "searchMarket: "+market.getName());
+                        Log.d(TAG, "searchMarket: " + market.getName());
                     }
-
-                    Log.d(TAG, "searchMarket: lllllllllllllllllllllllll");
-
-
-
+                    Log.d(TAG, "searchMarket: lllllllllllllllllllllllll"+response.body().size());
                 } else {
                     Error error = new Error("Request OK but noting was returned");
 

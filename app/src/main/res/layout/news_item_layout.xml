@@ -45,7 +45,7 @@
             android:fontFamily="@font/amiko_bold"
             android:maxLines="3"
             android:text="@{article.title}"
-            android:textColor="@color/black"
+            android:textColor="?text_color"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@id/news_image_container"
             app:layout_constraintEnd_toStartOf="@id/news_image_container"

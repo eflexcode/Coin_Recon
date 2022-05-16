@@ -91,7 +91,7 @@ public class ExchangeRepository {
 
             @Override
             public void onFailure(@NotNull Call<List<Exchange>> call, Throwable t) {
-                String error = t.getMessage() + "\n Drag down to refresh";
+                String error = "Something is not right \nDrag down to refresh";
 
                 errorMutableLiveData.setValue(error);
             }

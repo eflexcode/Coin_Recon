@@ -71,7 +71,6 @@ public class MarketInfoAdapter extends RecyclerView.Adapter<MarketInfoAdapter.Ma
         this.fragmentManager = fragmentManager;
     }
 
-
     static DiffUtil.ItemCallback<Market> marketItemCallback = new DiffUtil.ItemCallback<Market>() {
         @Override
         public boolean areItemsTheSame(@NonNull Market oldItem, @NonNull Market newItem) {

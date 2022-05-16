@@ -11,6 +11,7 @@ import com.larrex.coinrecon.model.ApiResult;
 import com.larrex.coinrecon.model.Error;
 import com.larrex.coinrecon.model.Market;
 import com.larrex.coinrecon.repository.MarketInfoRepository;
+import com.larrex.coinrecon.repository.TrendingRepository;
 
 import java.util.List;
 
@@ -34,12 +35,16 @@ public class MarketInfoViewModel extends AndroidViewModel {
     @Inject
     MarketInfoRepository repository;
 
+    @Inject
+    TrendingRepository trendingRepository;
+
     public void getMarketData(String currency, int perPage, int page) {
         repository.getMarketData(currency, perPage, page);
     }
 
     public LiveData<ApiResult<List<Market>>> getResultMutableLiveData() {
 
+        trendingRepository.getTrendingCoins();
         resultMutableLiveData = repository.resultMutableLiveData;
 
         return resultMutableLiveData;

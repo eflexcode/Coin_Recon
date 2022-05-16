@@ -78,5 +78,17 @@ public class RetrofitModule {
         return retrofit.create(ApiClients.class);
     }
 
+    @Named("trending")
+    @Provides
+    public static ApiClients getTrending() {
+        final String Base_url = "https://api.coingecko.com/api/v3/search/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Base_url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(ApiClients.class);
+    }
 
 }

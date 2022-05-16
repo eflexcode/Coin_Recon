@@ -119,7 +119,8 @@ public class MarketInfoRepository {
 
             @Override
             public void onFailure(@NonNull Call<List<Market>> call, @NonNull Throwable t) {
-                Error error = new Error(t.getMessage()+"\n Drag down to refresh");
+                Error error = new Error("Something is not right \nDrag down to refresh");
+//                String error = "Something is not right \n Drag down to refresh";
 
                 ApiResult<Error> errorApiResult = new ApiResult<>(error);
 

@@ -27,7 +27,6 @@ import com.larrex.coinrecon.viewmodel.MarketInfoViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MarketInfoFragment extends Fragment {
 
 
@@ -49,7 +48,6 @@ public class MarketInfoFragment extends Fragment {
         // Inflate the layout for this fragment
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_martek_info, container, false);
-
 
         binding.marketInfoRecyclerView.showShimmer();
 

@@ -10,14 +10,13 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         tools:context=".fragment.SearchFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/login_appBar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@color/white">
+            android:background="?toolbar_color">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -36,14 +35,14 @@
                     android:gravity="start|center"
                     android:hint="@string/enter_coin_name_or_contract_address"
                     android:imeActionLabel="Go"
-                    android:textAllCaps="false"
                     android:imeOptions="actionGo"
                     android:inputType="text"
                     android:maxLines="1"
                     android:padding="10dp"
-
                     android:singleLine="true"
-                    android:textColor="@color/black"
+
+                    android:textAllCaps="false"
+                    android:textColor="?text_color"
                     android:textSize="14sp" />
 
                 <TextView

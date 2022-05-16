@@ -1,15 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:background="@color/green"
-    android:layout_height="match_parent"
-    tools:context=".fragment.MoreFragment">
+<layout>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".fragment.MoreFragment">
 
-</FrameLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:id="@+id/more_menu"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardElevation="5dp"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_marginBottom="0dp"
+            app:title="">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:fontFamily="@font/amiko_bold"
+                android:text="@string/more"
+                android:textColor="?toolbar_text_color"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/telegram"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:fontFamily="@font/amiko_bold"
+            android:gravity="center|start"
+            android:text="Contact us on our Telegram group"
+            android:textColor="?text_color"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/t"
+            app:layout_constraintTop_toBottomOf="@id/more_menu" />
+
+        <ImageButton
+            android:id="@+id/t"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="10dp"
+            android:background="@android:color/transparent"
+            android:padding="15dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/telegram"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/more_menu"
+            app:tint="#2196F3" />
+
+        <View
+            android:id="@+id/two"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/light_gray"
+            app:layout_constraintTop_toBottomOf="@id/telegram" />
+
+        <TextView
+            android:id="@+id/rate"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="0dp"
+            android:fontFamily="@font/amiko_bold"
+            android:gravity="center|start"
+            android:text="Rate us on Google play"
+            android:textColor="?text_color"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/p"
+            app:layout_constraintTop_toBottomOf="@id/two" />
+
+        <!--    <ImageButton-->
+        <!--        android:layout_width="50dp"-->
+        <!--        android:layout_height="50dp"-->
+        <!--        android:layout_marginEnd="10dp"-->
+        <!--        android:background="@android:color/transparent"-->
+        <!--        android:src="@drawable/ic_next"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@id/two" />-->
+
+        <ImageButton
+            android:id="@+id/p"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:background="@android:color/transparent"
+            android:padding="15dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/google_play"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/two" />
+
+        <View
+            android:id="@+id/three"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/light_gray"
+            app:layout_constraintTop_toBottomOf="@id/rate" />
+
+        <!--    <ImageButton-->
+        <!--        android:layout_width="50dp"-->
+        <!--        android:layout_height="50dp"-->
+        <!--        android:layout_marginEnd="10dp"-->
+        <!--        android:background="@android:color/transparent"-->
+        <!--        android:src="@drawable/ic_next"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@id/three" />-->
+
+
+        <ImageButton
+            android:id="@+id/s"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:background="@android:color/transparent"
+            android:padding="15dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/share"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/three"
+            app:tint="@color/dark_turquoise" />
+
+        <TextView
+            android:id="@+id/share"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="0dp"
+            android:fontFamily="@font/amiko_bold"
+            android:gravity="center|start"
+            android:text="Share the Coin recon app"
+            android:textColor="?text_color"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/s"
+            app:layout_constraintTop_toBottomOf="@id/three" />
+
+        <View
+            android:id="@+id/four"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/light_gray"
+            app:layout_constraintTop_toBottomOf="@id/share" />
+
+        <TextView
+            android:id="@+id/legal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/amiko_bold"
+            android:text="Legal"
+            android:textColor="@color/light_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/four" />
+
+
+        <View
+            android:id="@+id/five"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/light_gray"
+            app:layout_constraintTop_toBottomOf="@id/legal" />
+
+        <TextView
+            android:id="@+id/privacy"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="0dp"
+            android:fontFamily="@font/amiko_bold"
+            android:gravity="center|start"
+            android:text="Privacy policy"
+            android:textColor="?text_color"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/p"
+            app:layout_constraintTop_toBottomOf="@id/five" />
+
+        <!--        &lt;!&ndash;    <ImageButton&ndash;&gt;-->
+        <!--        &lt;!&ndash;        android:layout_width="50dp"&ndash;&gt;-->
+        <!--        &lt;!&ndash;        android:layout_height="50dp"&ndash;&gt;-->
+        <!--        &lt;!&ndash;        android:layout_marginEnd="10dp"&ndash;&gt;-->
+        <!--        &lt;!&ndash;        android:background="@android:color/transparent"&ndash;&gt;-->
+        <!--        &lt;!&ndash;        android:src="@drawable/ic_next"&ndash;&gt;-->
+        <!--        &lt;!&ndash;        app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+        <!--        &lt;!&ndash;        app:layout_constraintTop_toBottomOf="@id/two" />&ndash;&gt;-->
+
+        <ImageButton
+            android:id="@+id/pr"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:background="@android:color/transparent"
+            android:padding="15dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/privacy_policy"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/five"
+            app:tint="@color/dark_turquoise" />
+
+        <View
+            android:id="@+id/six"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/light_gray"
+            app:layout_constraintTop_toBottomOf="@id/privacy" />
+
+        <ImageButton
+            android:id="@+id/dis"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:background="@android:color/transparent"
+            android:padding="15dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/six"
+            app:tint="@color/dark_turquoise" />
+
+        <TextView
+            android:id="@+id/disclamer"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="0dp"
+            android:fontFamily="@font/amiko_bold"
+            android:gravity="center|start"
+            android:text="Disclaimer"
+            android:textColor="?text_color"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/dis"
+            app:layout_constraintTop_toBottomOf="@id/six" />
+
+        <View
+            android:id="@+id/seven"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/light_gray"
+            app:layout_constraintTop_toBottomOf="@id/disclamer" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

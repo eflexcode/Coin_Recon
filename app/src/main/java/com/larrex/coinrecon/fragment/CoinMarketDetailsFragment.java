@@ -1,6 +1,7 @@
 package com.larrex.coinrecon.fragment;
 
 import android.app.Dialog;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -92,6 +93,8 @@ public class CoinMarketDetailsFragment extends BottomSheetDialogFragment {
             }
         });
 
+//        binding.chart.setBorderColor(android.R.attr.textColor);
+
         binding.setMarket(market);
 //        24h change: ▼ 23.09% (+$500)
 //       binding.coinVolume.setText("24h change: ▼ "+market.getPrice_change_percentage_24h() +"% ("+market.getPrice_change_24h()+")");
@@ -170,8 +173,25 @@ public class CoinMarketDetailsFragment extends BottomSheetDialogFragment {
                 candleDataSet.setHighLightColor(R.color.green);
                 candleDataSet.setCubicIntensity(0);
                 candleDataSet.setGradientColor(Color.parseColor("#03989e"), Color.parseColor("#72E672"));
-                candleDataSet.setValueTextColor(Color.parseColor("#000000"));
+                candleDataSet.setValueTextColor(R.color.green);
+//                candleDataSet.colo
 
+//                int nightModeFlags =
+//                        getActivity().getResources().getConfiguration().uiMode &
+//                                Configuration.UI_MODE_NIGHT_MASK;
+//                switch (nightModeFlags) {
+//                    case Configuration.UI_MODE_NIGHT_YES:
+//                        candleDataSet.setValueTextColor(Color.parseColor("#ffffff"));
+//
+//                        break;
+//
+//                    case Configuration.UI_MODE_NIGHT_NO:
+//                        candleDataSet.setValueTextColor(Color.parseColor("#ffffff"));
+//
+//                        break;
+//
+//
+//                }
                 LineData cd = new LineData(candleDataSet);
 
 //                Legend legend = binding.chart.getLegend();
@@ -185,6 +205,7 @@ public class CoinMarketDetailsFragment extends BottomSheetDialogFragment {
                 binding.chart.getAxisRight().setDrawGridLines(false);
                 binding.chart.setScaleEnabled(false);
                 binding.chart.invalidate();
+//                binding.chart.color
 //                binding.chart.sle
 
                 XAxis xAxis = binding.chart.getXAxis();

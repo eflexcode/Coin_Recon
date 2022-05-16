@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -69,7 +70,7 @@ public class SearchFragment extends Fragment {
                     binding.searchHistoryRecyclerView.setVisibility(View.VISIBLE);
                     binding.showError.setVisibility(View.INVISIBLE);
 
-                    SearchHistoryAdapter adapter = new SearchHistoryAdapter(searchHistoryEntities,getActivity());
+                    SearchHistoryAdapter adapter = new SearchHistoryAdapter(searchHistoryEntities, getActivity());
 
                     binding.searchHistoryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -80,9 +81,11 @@ public class SearchFragment extends Fragment {
         });
 
         ProgressDialog progressDialog = new ProgressDialog(getContext());
-        progressDialog.setCancelable(false);
-        progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setMessage("Marking query");
+
+        ProgressDialog progressDialog2 = new ProgressDialog(getContext());
+
+        progressDialog2.setMessage("Marking query");
 
         binding.search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -92,20 +95,32 @@ public class SearchFragment extends Fragment {
                     String searchedItem = textView.getText().toString();
 
                     if (!searchedItem.trim().isEmpty()) {
-
-                        Toast.makeText(getContext(), "You can also search with contract address", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getContext(), "You can also search with contract address", Toast.LENGTH_SHORT).show();
 
                         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH);
 
                         Date date = new Date();
 
-                        SearchHistoryEntity entity = new SearchHistoryEntity(dateFormat.format(date), searchedItem.toLowerCase());
+                        SearchHistoryEntity entity = new SearchHistoryEntity(dateFormat.format(date), searchedItem.trim().toLowerCase());
 
                         viewModel.insert(entity);
 
-                        searchMarketViewModel.getMarketData("usd", searchedItem.toLowerCase());
+                        searchMarketViewModel.getMarketData("usd", searchedItem.trim().toLowerCase());
 
                         progressDialog.show();
+
+                        Handler handler = new Handler();
+
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                progressDialog.dismiss();
+                                progressDialog2.show();
+
+//                                progressDialog.setCanceledOnTouchOutside(true);
+                            }
+                        }, 5000);
+
 
                         return true;
                     }
@@ -115,15 +130,16 @@ public class SearchFragment extends Fragment {
             }
         });
 
-
         searchMarketViewModel.getIsAdapterLoading().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
 
-                if (aBoolean){
+                if (aBoolean) {
                     progressDialog.show();
-                }else {
+                    progressDialog2.show();
+                } else {
                     progressDialog.dismiss();
+                    progressDialog2.dismiss();
                 }
 
             }
@@ -141,6 +157,7 @@ public class SearchFragment extends Fragment {
             public void onChanged(ApiResult<Market> marketApiResult) {
 
                 progressDialog.dismiss();
+                progressDialog2.dismiss();
 
                 Market market = marketApiResult.getResult();
 
@@ -150,7 +167,7 @@ public class SearchFragment extends Fragment {
                 bundle.putSerializable("coinData", market);
 
                 fragment.setArguments(bundle);
-                fragment.show(getChildFragmentManager(),"coindata");
+                fragment.show(getChildFragmentManager(), "coindata");
                 searchMarketViewModel.isAdapterLoading.setValue(false);
 
             }

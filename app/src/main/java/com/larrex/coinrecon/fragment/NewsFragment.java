@@ -2,6 +2,7 @@ package com.larrex.coinrecon.fragment;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -10,8 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.larrex.coinrecon.R;
 import com.larrex.coinrecon.adapter.NewsAdapter;
@@ -44,6 +47,21 @@ public class NewsFragment extends Fragment {
     }
 
     private void init() {
+
+        binding.newMenu.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                switch (item.getItemId()){
+                    case R.id.info:
+                        Toast.makeText(getContext(),
+                                "pppppppppppppppppppppppp", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+
+                return true;
+            }
+        });
 
         binding.newsRecyclerView.showShimmer();
 
